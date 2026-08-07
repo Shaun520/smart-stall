@@ -1,0 +1,34 @@
+0.创建模块，控制器  服务工厂 
+nest g module notebook --no-spec
+
+nest g controller notebook --no-spec
+
+nest g service notebook --no-spec
+
+1.创建拦截器 
+nest g interceptor transform --no-spec
+
+2.创建过滤器
+nest g filter http-exception --no-spec
+
+3.连接mongodb数据库
+pnpm i @nestjs/mongoose mongoose
+
+4.安装config文件
+pnpm i --save @nestjs/config
+
+5.安装jwt令牌
+pnpm i --save @nestjs/jwt
+
+
+6.安装oss 和 Multer
+pnpm install ali-oss 
+pnpm install @nestjs/platform-express multer --save
+pnpm install -D @types/multer
+
+
+7. 安装axios
+pnpm install @nestjs/axios axios 
+
+8. 安装redis - 缓存（短信验证码）
+pnpm add @nestjs-modules/ioredis ioredis

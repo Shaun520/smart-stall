@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+unpackage/
+
+# env
+.env
+.env.*.local
+
+# logs
+*.log
+pnpm-debug.log*
+
+# IDE
+.hbuilderx/
+.idea/
+.vscode/*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# misc
+temp_input.mp3
+.temp/
+.tmp/

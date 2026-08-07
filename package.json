@@ -1,0 +1,11 @@
+{
+  "name": "smart-stall",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter backend start:dev",
+    "build": "pnpm --filter backend build",
+    "start": "pnpm --filter backend start:prod",
+    "lint": "pnpm --filter backend lint"
+  }
+}

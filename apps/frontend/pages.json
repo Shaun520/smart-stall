@@ -1,0 +1,268 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/my/my",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的",
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path" : "pages/map/index",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/ai-poster",
+			"style" : 
+			{
+				"usingComponents": {
+					
+				}
+			}
+		},
+		{
+			"path" : "pages/function/my-poster",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/my-poster-detail",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/poster-generate",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/message",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/message-detail",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/ai-weather",
+			"style" : {
+				
+			}
+		},
+		{
+			"path" : "pages/function/todo",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/ai-collect",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/more",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/my/my-profile",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/my/my-add-item",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/my/my-order-management",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/my/my-inventory-management",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/ai-talk",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/map/map",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/map/search",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/product",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/market",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/login/register",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/login/forget-password",
+			"style" : 
+			{
+				
+			}
+		},
+		{
+			"path" : "pages/function/poster-edit",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/smart-choose-location",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/smart-choose-goods",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/smart-choose-poster",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/smart-choose-publish",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/location-details",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/goods-details",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/function/one-click-market/my-goods",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"list": [
+			{
+				"iconPath": "/static/barChart.png",
+				"pagePath": "pages/index/index",
+	
+				"text": "首页"
+			},
+			{
+				"iconPath": "/static/arrow-up.png",
+				"pagePath": "pages/map/index",
+				"text": "找位置"
+			},
+			{
+				"iconPath": "/static/avatar-down.png",
+				"pagePath": "pages/my/my",
+	
+				"text": "我的"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"name": "frontend",
+	"dependencies": {
+		"sass": "^1.94.0",
+		"frontend": "link:"
+	}
+}
