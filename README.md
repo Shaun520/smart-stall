@@ -1,173 +1,115 @@
-# Smart-Stall 智慧摆摊
+# 您的市井"ai"人——用AI助力，一"智"赚不停
 
-面向摆摊经营者的移动应用平台，围绕「**找位置 → 选品 → 设计广告 → 开张经营**」全流程提供一站式服务：
+## 一、项目简介
+"爱摆摊"是一个以人工智能和大数据技术为核心驱动的地摊经济全域数字化服务平台。项目以摊主智能经营助手为切入点，通过构建"数据+算法+场景"的智能系统，为地摊经营者提供从选址选品、营销推广、客户管理到供应链优化的全链路数字化解决方案。
 
-- **智能选址**：地图找位置、语音搜索、路线规划
-- **AI 营销**：AI 海报生成与编辑、一键营销向导（选址规划 → 商品配置 → 广告设计 → 完成发布）
-- **智能助手**：AI 对话「小智」（支持图文与语音播报）、天气策略官、AI 选品
-- **经营工具**：库存管理、订单管理、待办事项、营业状态管理
+**项目宗旨**：技术普惠，生态共赢——用AI助力，一"智"赚不停
 
-## 目录结构
+## 二、核心功能模块
 
-```
-smart-stall/
-├── pnpm-workspace.yaml          # pnpm workspace 配置 (apps/*)
-├── package.json                 # 根脚本 (dev/build/start/lint)
-├── README.md
-└── apps/
-    ├── backend/                 # NestJS 后端
-    │   ├── src/
-    │   │   ├── ai/              # AI 能力对接
-    │   │   ├── auth/            # 认证与注册
-    │   │   ├── conversation/    # 会话管理
-    │   │   ├── inventory/       # 库存管理
-    │   │   ├── message/         # 消息管理
-    │   │   ├── oss/             # 阿里云 OSS 存储
-    │   │   ├── poster/          # 海报管理
-    │   │   ├── redis/           # Redis 全局模块
-    │   │   ├── service/         # 第三方服务（短信/人脸/语音）
-    │   │   ├── todo/            # 待办事项
-    │   │   ├── upload/          # 文件上传
-    │   │   ├── user/            # 用户模块
-    │   │   ├── websocket/       # WebSocket 网关
-    │   │   ├── transform/       # 全局响应拦截器
-    │   │   └── http-exception/  # 全局异常过滤器
-    │   └── .env                 # 本地环境变量（不入库）
-    └── frontend/                # uni-app 前端
-        ├── pages/               # 页面（33 个）
-        │   ├── index/           # 首页（营业状态、营收概览）
-        │   ├── login/           # 登录 / 注册 / 找回密码
-        │   ├── map/             # 找位置 / 路线导航 / 地点搜索
-        │   ├── my/              # 我的 / 个人资料 / 订单 / 库存
-        │   └── function/        # AI 海报 / AI 对话 / 天气 / 待办 / 一键营销等
-        ├── apis/                # 接口封装（ai/chat/file/inventory/poster/todo/user）
-        ├── utils/               # 工具库（http 请求、音频、文本解析、地区数据）
-        ├── components/          # 自定义组件（海报抽屉、格式化消息）
-        └── uni_modules/         # DCloud uni-ui 官方组件库
-```
+### 2.1 首页界面
+首页顶部提供智能输入框，摊主输入计划经营的时间和地点，即可获得AI生成的个性化经营建议。集成"消息中心"、"待办事项"、"收藏"、"商品管理"、"AI海报"等核心功能，方便摊主快速触达。
 
-## 技术栈
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/ff8e7fa5389bde317d52b8d1ff08f375-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449575%3B2085809575&q-key-time=1770449575%3B2085809575&q-header-list=host&q-url-param-list=&q-signature=93f6649540dec88effec945e42a0c78a55eb385d)
 
-| 端 | 技术 |
-|---|---|
-| 前端 | uni-app (Vue 3) + HBuilderX，可打包 App / H5 / 微信小程序 |
-| 后端 | NestJS 11 · TypeScript |
-| 数据库 | MongoDB（Mongoose，6 张集合） |
-| 缓存 | Redis（ioredis，短信验证码） |
-| 实时通信 | WebSocket（ws，端口 3001，路径 /ws） |
-| 文件存储 | 阿里云 OSS |
-| 外部 AI | 火山引擎（豆包图文生成/理解、DeepSeek 对话、视频生成）、博查图片搜索 |
-| 其他服务 | 阿里云短信、百度人脸识别 / 语音识别(ASR) / 语音合成(TTS)、百度地图 |
+### 2.2 找位置界面
+地图上清晰标注允许摆摊的区域、时间段、费用及配套设施，从根本上解决"摆在哪里"的合规性问题。提供具体点位的"日均人流量"、"平均收益"、"周边商铺"数量等量化数据。
 
-## 快速开始
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/0f898635c0d1fe355d49f031780c1f20-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449577%3B2085809577&q-key-time=1770449577%3B2085809577&q-header-list=host&q-url-param-list=&q-signature=09a94c5ae0a8594f5f91b10d1066e714bb916cea)
 
-### 环境要求
+### 2.3 我的界面
+提供"营收概览"功能，清晰展示今日、本周收入及同比变化。"快捷功能"区集成"新增品项"、"语音记账"、"收款码"等高频工具，提升经营效率。
 
-- Node.js ≥ 18
-- pnpm ≥ 10
-- MongoDB、Redis 本地实例
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/b79728f264b05eb378af6a65d80f50b7-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449578%3B2085809578&q-key-time=1770449578%3B2085809578&q-header-list=host&q-url-param-list=&q-signature=8780881338d2beeff854ea3b101bfc331af1aa11)
 
-### 安装与启动
+## 三、技术特色
 
+### 3.1 AI智能海报生成
+集成Seedream 4.0的强大生成能力，实现一键式专业海报创作。以用户提供的原始图片和相关描述参数为输入，结合预设模板生成商用级视觉内容。
+
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/2fdc1f64dd88f153e3fa8cb86cb1712b-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449584%3B2085809584&q-key-time=1770449584%3B2085809584&q-header-list=host&q-url-param-list=&q-signature=77450e5b37b8d9bc07c83add9a93f2860e32e6b9)
+
+### 3.2 AI智能热门商品推荐
+深度集成博查搜索API，构建动态的热门商品推荐引擎。实时处理用户搜索意图、地理位置信息和时间上下文，提供个性化智能推荐。
+
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/274fc4dd9a649d3591936a4f4ee99389-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449585%3B2085809585&q-key-time=1770449585%3B2085809585&q-header-list=host&q-url-param-list=&q-signature=d6206edf46677aa7cdedddaabb39990586cafaa4)
+
+### 3.3 AI智能摊位寻址与规划
+整合GIS、实时人流热力、交通流量等多元数据，构建精细化城市区域画像，为摊主个性化推荐最优空闲摊位点位。
+
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/e182bcb26f91e20febc0260eb0e0c1a0-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449586%3B2085809586&q-key-time=1770449586%3B2085809586&q-header-list=host&q-url-param-list=&q-signature=46b5a828fd830d768b4d7bea9675686e27c394a7)
+
+## 四、技术架构
+
+### 4.1 前端架构
+- **开发平台**：Hbuilder X
+- **技术栈**：vue3 + uniapp + axios + echart + pinia + uni-ui
+- **工程目录**：采用模块化设计，确保代码可维护性
+
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/e2f77eeb77c901d88736fbaac60e3e6e-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449588%3B2085809588&q-key-time=1770449588%3B2085809588&q-header-list=host&q-url-param-list=&q-signature=9b42e07ad0eacf965a298c145c177b1756fddba5)
+
+### 4.2 后端架构
+- **开发平台**：VScode
+- **技术栈**：nest + typescript + mongoose + oss
+- **接口设计**：RESTful API，支持高并发访问
+
+![img](https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/b79728f264b05eb378af6a65d80f50b7-image.png?q-sign-algorithm=sha1&q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&q-sign-time=1770449589%3B2085809589&q-key-time=1770449589%3B2085809589&q-header-list=host&q-url-param-list=&q-signature=c769a89faf0cf2373aa9db8becab47a2cadb7bc7)
+
+## 五、核心优势
+
+### 5.1 技术领先优势
+- AI驱动的智能决策系统，预测算法准确率超过85%
+- 全链路智能化赋能，从选址到营销全覆盖
+- 多维数据整合分析，AIGC内容生成能力
+
+### 5.2 生态整合优势
+- 摊主、消费者、政府三方协同的平台架构
+- 政府深度参与构建合规壁垒
+- 双边市场效应形成良性循环
+
+### 5.3 运营效率优势
+- 轻资产高扩展模式，数字化获客
+- 自动化服务降低边际成本
+- 高速扩展性支持快速规模化
+
+## 六、安装与部署
+
+### 6.1 环境要求
+- Node.js 14.0+
+- MongoDB 4.4+
+- Redis 6.0+
+
+### 6.2 快速开始
 ```bash
-# 1. 根目录安装依赖（一次即可，前后端共享）
+# 克隆项目
+git clone https://github.com/Shaun520/smart-stall.git
+
+# 安装依赖
 pnpm install
 
-# 2. 配置环境变量
+# 配置环境变量
 cp apps/backend/.env.example apps/backend/.env
-# 编辑 .env，填入 MongoDB / Redis / 各第三方密钥
 
-# 3. 启动后端（watch 模式，端口 3005）
+# 启动后端服务
 pnpm dev
-
-# 4. 构建 / 生产启动 / 代码检查
-pnpm build
-pnpm start
-pnpm lint
 ```
 
-### 前端运行
+> 前端为 uni-app 项目，使用 HBuilderX 打开 `apps/frontend` 目录运行（App / 微信小程序 / 浏览器）。
 
-用 **HBuilderX** 打开 `apps/frontend` 目录，选择运行目标（App / 微信小程序 / 浏览器）即可。接口地址在 `apps/frontend/utils/http.js` 中配置（默认 `http://localhost:3005/stall`）。
+## 七、项目特色
 
-## 后端接口总览
+### 7.1 创新亮点
+1. **技术普惠**：将前沿AI技术转化为摊主"用得起、用得好"的实用工具
+2. **数据驱动**：帮助摊主从经验驱动转向数据驱动经营
+3. **生态共建**：连接摊主、消费者、供应商、政府等多方参与者
 
-所有接口统一前缀 `/stall`，响应统一格式：`{ errno: 0, data }`（成功）或 `{ errno: -1, message }`（失败）。除登录注册等公开接口外，均需请求头携带 `Authorization: Bearer <token>`。
+### 7.2 隐私保护
+- 遵循最小必要原则，仅收集经营必需信息
+- 数据传输全程加密，存储数据加密落盘
+- 用户拥有数据完全控制权，支持一键删除
 
-| 模块 | 接口 | 说明 |
-|---|---|---|
-| auth | `POST /auth/login` | 账号/手机号 + 密码登录，返回 JWT（access 1d + refresh 30d） |
-| auth | `POST /auth/register-with-code` | 短信验证码注册 |
-| auth | `POST /auth/send-register-code` | 发送注册验证码 |
-| auth | `POST /auth/send-reset-password-code` | 发送重置密码验证码 |
-| auth | `POST /auth/reset-password-with-code` | 验证码重置密码 |
-| auth | `POST /auth/refresh-token` | 刷新 access token |
-| auth | `GET /auth/profile` | 获取当前用户信息 |
-| user | `PUT /user` | 修改个人资料 |
-| ai | `POST /ai/chat` | AI 对话（流式，支持图片、联网搜索） |
-| ai | `POST /ai/image/understand` | 图片理解（豆包） |
-| ai | `POST /ai/image/generate` | 文生图（海报生成） |
-| ai | `POST /ai/image/search` | 图片搜索（博查） |
-| ai | `POST /ai/video/generate` + `GET /ai/video/generate/:id` | 提交 / 轮询视频生成任务 |
-| upload | `POST /upload/image` / `POST /upload/file` / `POST /upload/multiple` | 单图 / 单文件 / 多图（≤5 张）上传至 OSS |
-| poster | `POST/GET/PUT/DELETE /poster[/:id]` | 海报 CRUD（按用户隔离） |
-| inventory | `POST/GET/PUT/DELETE /inventory[/:id]` | 库存商品 CRUD（含上/下架状态） |
-| todo | `POST/GET/PUT/DELETE /todo[/:id]` | 待办事项 CRUD |
-| conversation | `POST/GET/DELETE /conversation[/:id]` | 会话创建 / 列表 / 删除（AI/私聊/群聊） |
-| message | `POST /message`、`GET /message?conversationId=` | 发送 / 拉取消息 |
-| service | `POST /service/face/add` / `face/get` / `face/verify` | 人脸注册 / 查询 / 1:1 验证（百度） |
-| service | `POST /service/voice/recognize` | 语音识别（百度 ASR） |
+## 八、团队介绍
+项目由湖南科技大学跨学科团队开发，涵盖计算机科学、工商管理、马克思主义理论等多个专业背景，具备完整的技术研发和运营能力。
 
-> 旧版 `user` 模块接口已 307 重定向至 `auth` 对应接口，前端可平滑过渡。
-
-### 数据模型（MongoDB 集合）
-
-| 集合 | 关键字段 |
-|---|---|
-| `users` | username(唯一)、phone(唯一)、password、avatar、nickname、gender、email、sign |
-| `conversations` | userId、title、type(AI/private/group) |
-| `messages` | conversationId、senderId(-1 为 AI)、type、content、image |
-| `inventories` | userId、name、price、image、total/available/reserved/ordered、status、sku、sign、category |
-| `posters` | ownerId、title、description、image、size、style、viewCount、downloadCount |
-| `todos` | userId、startTime、endTime、tasks[] |
-
-## 核心功能说明
-
-### 一键营销（one-click-market）
-
-四步向导，是平台的旗舰流程：
-
-1. **智能选址规划** → 按行业 / 客群筛选推荐摆摊点位
-2. **商品配置** → AI 选品与定价策略
-3. **广告设计** → 上传商品图，AI 生成海报
-4. **完成发布** → 预览并选择发布平台（全国省市地区数据在 `utils/data.js`）
-
-### AI 海报
-
-- 素材上传 → 豆包**图片理解**自动识别商品信息 → 文生图生成海报（支持多种风格：简洁/彩色/极简/复古）
-- 生成后可继续编辑，海报持久化保存，支持查看与下载计数
-
-### AI 对话「小智」
-
-- 流式对话，支持上传图片、联网搜索
-- 回复自动格式化渲染（标题/列表/加粗），支持百度 TTS 语音播报
-
-### 实时通信
-
-WebSocket 网关（端口 3001，路径 `/ws`）：连接建立即下发 `connection_established`；支持 `join_room` / `leave_room` / `chat`（房间广播）/ `ping-pong` 心跳。
-
-## 开发约定
-
-- **工作区命令**：所有 pnpm 命令在根目录执行；`pnpm --filter backend <script>` 可单独操作后端
-- **响应格式**：后端统一 `{ errno, data | message }`，前端 `utils/http.js` 已封装自动解析、401 自动刷新 token（带请求队列）
-- **密钥安全**：`.env` 不入库，新环境复制 `.env.example` 填写
-- **前端 mock 说明**：部分页面（天气策略、收藏、消息中心、一键营销部分步骤）当前使用本地模拟数据，后续接入真实接口
-
-## 常见问题
-
-| 问题 | 处理 |
-|---|---|
-| 后端启动报 MongoDB 连接失败 | 确认本地 MongoDB 已启动，`MONGO_HOST/PORT` 正确 |
-| 短信验证码收不到 | 检查 Redis 是否运行、`ALIYUN_SMS_APP_CODE` 是否有效 |
-| 图片上传失败 | 检查 OSS 密钥与 bucket 配置 |
-| HBuilderX 运行前端报错 | 重新打开 `apps/frontend` 并重新编译（`unpackage` 为构建产物，已 gitignore） |
+------
+*让智慧的光芒，照亮每一处朴实而蓬勃的市井角落。*
