@@ -20,13 +20,15 @@ export class UserService {
     return {};
   }
 
-  //用户名登录
-  async fineOneByUsername(username: string, password: string) {
-    return await this.userModel.findOne({ username, password });
-  }
-  //手机号登录
-  async fineOneByPhone(phone: string, password: string) {
-    return await this.userModel.findOne({ phone, password });
+  //登录查询：账号既可以是用户名，也可以是手机号
+  async findOneByAccount(account: string, password: string) {
+    //形如手机号就先按手机号匹配，否则先按用户名匹配；没命中再回退到另一种
+    const isPhone = /^1[3-9]\d{9}$/.test(account);
+    const primary = isPhone ? { phone: account } : { username: account };
+    const fallback = isPhone ? { username: account } : { phone: account };
+
+    const user = await this.userModel.findOne({ ...primary, password });
+    return user ?? (await this.userModel.findOne({ ...fallback, password }));
   }
   //修改用户信息
   async modify(_id: string, userInfo: User) {
