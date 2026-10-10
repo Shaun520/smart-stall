@@ -21,10 +21,14 @@ export class AuthService {
   ) {}
 
   async login(username: string, phone: string, password: string) {
-    let user;
-    if (phone) user = await this.userService.fineOneByPhone(phone, password);
-    else if (username)
-      user = await this.userService.fineOneByUsername(username, password);
+    //前端把同一个输入框的值同时塞进了 username 和 phone，两者取其一即可
+    const account = (phone || username || '').trim();
+    if (!account || !password) {
+      throw new BadRequestException('请输入用户名/手机号和密码');
+    }
+
+    //用户名、手机号均可登录
+    const user = await this.userService.findOneByAccount(account, password);
 
     if (!user) {
       throw new BadRequestException('用户名或密码错误');
